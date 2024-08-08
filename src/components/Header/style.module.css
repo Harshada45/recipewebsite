@@ -1,0 +1,40 @@
+.header {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 70px;
+}
+
+.layer {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.layer .logowrapper {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.layer .logowrapper .logo {
+  border: 5px solid #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+.layer .logowrapper .logo .brand {
+  font-size: 40px;
+  color: #fff;
+}
+.layer .headertext {
+  padding: 100px;
+  padding-bottom: 125px;
+  text-align: center;
+}
+.layer .headertext h1 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 45px;
+}
+.layer .headertext p {
+  font-size: 24px;
+  color: #6fcb9f;
+  font-weight: 600;
+}/*# sourceMappingURL=style.module.css.map */

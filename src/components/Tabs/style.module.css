@@ -1,0 +1,139 @@
+.recipeHeading {
+  color: #6fcb9f;
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 70px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.tabs .tablist {
+  width: 140px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+  cursor: pointer;
+}
+.tabs .tablist svg {
+  font-size: 50px;
+}
+.tabs .tablist span {
+  font-size: 18px;
+}
+.tabs .tablist.active {
+  background-color: #6fcb9f;
+}
+.tabs .tablist.active svg {
+  color: #fff;
+}
+.tabs .tablist.active span {
+  color: #fff;
+}
+.tabs .tablist.active::after {
+  position: absolute;
+  content: "";
+  border-top: 20px solid #6fcb9f;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  bottom: -20px;
+}
+
+.recipebanner {
+  background-color: #29336b;
+  padding: 60px 40px;
+  color: #fff;
+  display: flex;
+  margin-bottom: 70px;
+}
+.recipebanner .leftcol {
+  width: 50%;
+}
+.recipebanner .leftcol .badge {
+  background-color: #6fcb9f;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  display: inline-block;
+}
+.recipebanner .leftcol h1 {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+.recipebanner .leftcol p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.recipebanner .leftcol p strong {
+  margin-right: 5px;
+}
+.recipebanner .leftcol h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.recipebanner .leftcol .ingredients {
+  display: flex;
+  gap: 100px;
+}
+.recipebanner .leftcol .ingredients ul {
+  padding: 0;
+  display: flex;
+  flex-flow: wrap;
+  gap: 40px;
+  margin-top: 0;
+  list-style: none;
+}
+.recipebanner .leftcol .ingredients ul li {
+  width: calc(50% - 20px);
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+.recipebanner .leftcol .ingredients ul li svg {
+  font-size: 18px;
+}
+.recipebanner .leftcol .ingredients ul li span {
+  width: calc(100% - 18px);
+}
+.recipebanner .rightcol {
+  width: 50%;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipebanner .rightcol .imagewrapper {
+  width: 350px;
+  height: 350px;
+}
+.recipebanner .rightcol .imagewrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+}
+
+#exTab1 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+#exTab2 h3 {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+/* remove border radius for the tab */
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}/*# sourceMappingURL=style.module.css.map */

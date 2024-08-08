@@ -1,44 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: #f2f2f2;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Rokkitt", serif;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-
-
-
-.heading-line {
+.headingline {
   padding: 10px 0;
   font-size: 45px;
   text-align: center;
   margin-bottom: 50px;
 
-  .input-wrapper {
+  .inputwrapper {
     display: flex;
     width: 80%;
     padding: 20px;
@@ -73,8 +39,8 @@ p {
 
 .flexbox {
   display: flex;
-  flex-wrap: wrap; /* This allows the items to wrap to the next line if necessary */
-  justify-content: space-between; /* Adjust spacing between items if needed */
+  flex-wrap: wrap;
+  justify-content: space-between;
 
   .flexItem {
     flex-grow: 1;
@@ -105,18 +71,19 @@ p {
   }
 }
 
-.middle-top {
+.middletop {
   background-color: #29336b;
   color: white;
   padding: 20px;
   margin-top: 40px;
 
-  .main-footer {
+  .mainfooter {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    .main-content {
-     display: flex;
+
+    .maincontent {
+      display: flex;
       flex-grow: 1;
       flex-shrink: 1;
       flex-basis: calc(20% - 20px);
@@ -124,14 +91,14 @@ p {
       width: 100px;
       padding: 4px;
       gap: 8px;
-      .img-box {
+      .imgbox {
         img {
           width: 60px;
           border-radius: 6px;
         }
       }
-      .content-box{
-        .label{
+      .contentbox {
+        .label {
           font-size: 14px;
           font-style: italic;
         }
@@ -140,16 +107,32 @@ p {
   }
 }
 
-.footer-content{
+.footercontent {
   background-color: black;
-  padding: 10px;
+  padding: 20px;
+  text-align: center;
 
-  .social-media{
+  .socialmedia {
     display: flex;
     justify-content: center;
     gap: 15px;
     color: white;
     font-size: 20px;
   }
-}
 
+  .publishemnt {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+    padding-top: 20px;
+
+    a{
+      color: white;
+    }
+  }
+
+  .copyright{
+    color: white;
+  }
+}

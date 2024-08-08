@@ -1,0 +1,52 @@
+
+
+.header {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 70px;
+}
+
+.layer {
+  background-color: rgba(0, 0, 0, 0.5);
+   
+  .logowrapper {
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .logo {
+      border: 5px solid #fff;
+      padding: 10px;
+      cursor: pointer;
+      .brand {
+        font-size: 40px;
+        color: #fff;
+      }
+    }
+  }
+
+  .headertext {
+    padding: 100px;
+    padding-bottom: 125px;
+    text-align: center;
+  
+    h1 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 45px;
+    }
+    p {
+      font-size: 24px;
+      color: #6fcb9f;
+      font-weight: 600;
+    }
+  }
+
+}
+
+
+
+
+
