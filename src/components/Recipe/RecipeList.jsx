@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,} from "react";
 import { BsSearch } from "react-icons/bs";
 import { FaThumbsUp, FaClock } from "react-icons";
 import {
@@ -9,6 +9,7 @@ import {
 } from "react-icons/io";
 import { FaXTwitter } from "react-icons/fa6";
 import styles from './style.module.scss'
+import { useNavigate } from "react-router-dom";
 
 const RecipeList = (props) => {
   const [recipes, setRecipes] = useState([]);
@@ -16,10 +17,12 @@ const RecipeList = (props) => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
+   const navigate = useNavigate();
+
   const fetchData = () => {
     fetch("https://dummyjson.com/recipes")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) => { 
         setRecipes(data.recipes);
         setLoading(false);
       })
@@ -38,6 +41,10 @@ const RecipeList = (props) => {
   const handleSearch = recipes.filter((recipe) =>
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleClick = () => {
+    navigate("/description");
+  };
 
   return (
     <>
@@ -67,7 +74,7 @@ const RecipeList = (props) => {
             ) : (
               handleSearch.map((item, index) => (
                 <div key={index} className={styles.flexItem}>
-                  <div>
+                  <div onClick={handleClick}>
                     <img src={item.image} alt={item.name} />
                   </div>
                   <span>{item.name}</span>

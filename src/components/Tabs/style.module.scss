@@ -20,6 +20,8 @@
       gap: 5px;
       position: relative;
       cursor: pointer;
+
+    
   
       svg {
         font-size: 50px;
@@ -154,4 +156,38 @@
   #exTab1 .nav-pills > li > a {
     border-radius: 0;
   }
+
+  .nav-tabs{
+    display: flex !important;
+    justify-content: center;
+    margin-bottom: 30px;
+    --bs-nav-tabs-border-width:0 !important;
+    border: none !important;
+
+    .nav-link{
+      width: 140px !important;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    button#nav-home-tab svg{
+       font-size: 50px !important;
+    }
+  }
+
+  .nav.nav-tabs{
+    padding-bottom: 10px ;
+    button.nav-link.active{
+      border: none;
+    }
+  }
+
+
+
   
