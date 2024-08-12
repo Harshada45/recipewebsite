@@ -1,6 +1,21 @@
 .recipedesc {
-  background-color: #6fcb9f;
   border-radius: 4px;
   padding: 10px;
   margin-top: 20px;
+}
+.recipedesc .productdesc {
+  display: flex;
+  background-color: #29336b;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+.recipedesc .productdesc .leftsection {
+  padding: 40px;
+}
+.recipedesc .productdesc .rightsection img {
+  width: 500px;
+  border-radius: 6px;
 }/*# sourceMappingURL=style.module.css.map */

@@ -137,3 +137,28 @@
     color: white;
   }
 }
+
+
+
+.searchcontainer{
+   position: relative;
+   .suggestionitem{
+    width: 66%;
+    position: absolute;
+    margin: auto 188px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 0px 0px 4px 4px;
+
+    ul{
+      li{
+        list-style: none;
+        font-size: 18px;
+        text-align: left;
+        color: black;
+        padding-top: 5px;
+      }
+    }
+  }
+}
+

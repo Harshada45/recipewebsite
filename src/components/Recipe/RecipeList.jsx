@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,} from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import { FaThumbsUp, FaClock } from "react-icons";
 import {
@@ -8,21 +8,24 @@ import {
   IoLogoInstagram,
 } from "react-icons/io";
 import { FaXTwitter } from "react-icons/fa6";
-import styles from './style.module.scss'
+import styles from "./style.module.scss";
 import { useNavigate } from "react-router-dom";
 
-const RecipeList = (props) => {
+const RecipeList = ({ item }) => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isvisible, setIsVisible] = useState(false);
+  const inputRef = useRef(null);
+  const divRef = useRef(null);
 
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const fetchData = () => {
     fetch("https://dummyjson.com/recipes")
       .then((res) => res.json())
-      .then((data) => { 
+      .then((data) => {
         setRecipes(data.recipes);
         setLoading(false);
       })
@@ -42,27 +45,72 @@ const RecipeList = (props) => {
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleClick = () => {
-    navigate("/description");
+  const handleClick = (id) => {
+    navigate(`/description/${id}`);
   };
+
+  const handleInputClick = () => {
+    setIsVisible(true); // This will open the div when input is clicked
+  };
+
+
+  const handleClickOutside = (event) => {
+    // Close the div if the click is outside the input and the results div
+    if (
+      divRef.current && 
+      !divRef.current.contains(event.target) && 
+      inputRef.current && 
+      !inputRef.current.contains(event.target)
+    ) {
+      setIsVisible(false);
+    }
+  };
+
+
+  useEffect(() => {
+    // Add event listener to detect clicks outside
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
       <div className="container">
         <div className={styles.headingline}>
           <strong>Search Recipes</strong>
-          <div className={styles.inputwrapper}>
-            <input
-              type="text"
-              placeholder="Search your recipe"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button>
-              <BsSearch />
-            </button>
+          <div className={styles.searchcontainer}>
+            <div className={styles.inputwrapper}>
+              <input
+                type="text"
+                placeholder="Search your recipe"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onClick={handleInputClick}
+                ref={inputRef} 
+              />
+              <button>
+                <BsSearch />
+              </button>
+            </div>
+            {isvisible && (
+              <div className={styles.suggestionitem} ref={divRef}>
+                <div className={styles.productitem}>
+                  <ul>
+                    {handleSearch.map((item,index)=>(
+                    <li  onChange={(e) => setSearchTerm(e.target.value)}>{item.name}</li>
+
+                    ))}
+                    
+                  </ul>
+                </div>
+              </div>
+            )}
           </div>
         </div>
+
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
@@ -74,7 +122,7 @@ const RecipeList = (props) => {
             ) : (
               handleSearch.map((item, index) => (
                 <div key={index} className={styles.flexItem}>
-                  <div onClick={handleClick}>
+                  <div onClick={() => handleClick(item.id)}>
                     <img src={item.image} alt={item.name} />
                   </div>
                   <span>{item.name}</span>
@@ -114,21 +162,15 @@ const RecipeList = (props) => {
             <div className={styles.socialmedia}>
               <IoLogoFacebook /> <IoLogoInstagram /> <FaXTwitter />
             </div>
-            <div className={styles.publishemnt }>
+            <div className={styles.publishemnt}>
               <p>
-                <a href="/">
-                  Advertising
-                </a>
+                <a href="/">Advertising</a>
               </p>
               <p>
-                <a href="/">
-                  Terms & Conditions
-                </a>
+                <a href="/">Terms & Conditions</a>
               </p>
               <p>
-                <a href="/">
-                  Privacy Policy
-                </a>
+                <a href="/">Privacy Policy</a>
               </p>
               <p>
                 <a href="/">Hosted by DigitalOcean</a>
@@ -136,7 +178,7 @@ const RecipeList = (props) => {
             </div>
 
             <div className={styles.copyright}>
-            © Copyright 2024 Recipes WordPress Theme — Powered by WordPress
+              © Copyright 2024 Recipes WordPress Theme — Powered by WordPress
             </div>
           </div>
         </footer>

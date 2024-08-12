@@ -1,53 +1,76 @@
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const RecipeDescription = () => {
-  const [showdesc, setShowDesc] = useState([]);
-  const [loading, setLoading] = useState(true);
+function RecipeDescription() {
+  const [data, setData] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+
   const [error, setError] = useState(null);
 
-  const fetchDescData = () => {
-    fetch('https://dummyjson.com/recipes/1')
-      .then((res) => res.json())
-      .then((data) => {
-        setShowDesc(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching recipe description", err);
-        setError(err);
-        setLoading(false);
-      });
+  const navigate = useNavigate();
+  
+  const { id } = useParams();
+
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`https://dummyjson.com/recipes/${id}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log(data,'data 1 -->')
+      setData((prev)=>[...prev,data])
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchDescData();
-  }, []);
+    fetchData();
+  }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const handleBack=()=>{
+    navigate("/")
+  }
 
   return (
     <>
       <div className="container">
         <div className={styles.recipedesc}>
-          {showdesc && showdesc.length === 0 ? (
-           
-            <div>No Data Found</div>
-          ) : (
-            showdesc &&
-            showdesc.map((item, index) => (
-              <div key={index}>
-                
-                <div className={styles.leftsection}>{item.ingredients}</div>
-                <div className={styles.rightsection}>dfg</div>
+          {console.log(data,'data -->')}
+          {data &&
+            data.map((item, index) => (
+               <>
+               {console.log(item,'item -->')}
+                <div key={index}>
+                <div className={styles.productdesc}>
+                  <div className={styles.leftsection}>{item.ingredients}
+                    <div className="mt-5"><button onClick={handleBack} className="btn btn-primary">Back</button></div>
+                  </div>
+                  <div className={styles.rightsection}>
+                    <img src={item.image} />
+                  </div>
+                </div>
               </div>
-            ))
-          )}
+               </>
+              
+            ))}
         </div>
       </div>
     </>
   );
-};
-
+}
 export default RecipeDescription;
