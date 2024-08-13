@@ -1,0 +1,29 @@
+.footercontent {
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+  
+    .socialmedia {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      color: white;
+      font-size: 20px;
+    }
+  
+    .publishemnt {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      color: white;
+      padding-top: 20px;
+  
+      a{
+        color: white;
+      }
+    }
+  
+    .copyright{
+      color: white;
+    }
+  }

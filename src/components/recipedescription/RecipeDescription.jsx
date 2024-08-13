@@ -57,7 +57,10 @@ function RecipeDescription() {
                {console.log(item,'item -->')}
                 <div key={index}>
                 <div className={styles.productdesc}>
-                  <div className={styles.leftsection}>{item.ingredients}
+                  <div className={styles.leftsection}>
+                    <p>{item.ingredients}</p>
+                    <p>{item.instructions}</p>
+
                     <div className="mt-5"><button onClick={handleBack} className="btn btn-primary">Back</button></div>
                   </div>
                   <div className={styles.rightsection}>

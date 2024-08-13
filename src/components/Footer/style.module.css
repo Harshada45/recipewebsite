@@ -1,0 +1,25 @@
+.footercontent {
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+}
+.footercontent .socialmedia {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  color: white;
+  font-size: 20px;
+}
+.footercontent .publishemnt {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+  padding-top: 20px;
+}
+.footercontent .publishemnt a {
+  color: white;
+}
+.footercontent .copyright {
+  color: white;
+}/*# sourceMappingURL=style.module.css.map */

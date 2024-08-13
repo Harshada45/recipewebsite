@@ -69,83 +69,16 @@
     color: #29336b;
     font-style: italic;
     font-weight: 500;
+    font-size: 16px;
   }
 }
-
-.middletop {
-  background-color: #29336b;
-  color: white;
-  padding: 20px;
-  margin-top: 40px;
-
-  .mainfooter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    .maincontent {
-      display: flex;
-      flex-grow: 1;
-      flex-shrink: 1;
-      flex-basis: calc(20% - 20px);
-      margin: 10px;
-      width: 100px;
-      padding: 4px;
-      gap: 8px;
-      .imgbox {
-        img {
-          width: 60px;
-          border-radius: 6px;
-        }
-      }
-      .contentbox {
-        .label {
-          font-size: 14px;
-          font-style: italic;
-        }
-      }
-    }
-  }
-}
-
-.footercontent {
-  background-color: black;
-  padding: 20px;
-  text-align: center;
-
-  .socialmedia {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    color: white;
-    font-size: 20px;
-  }
-
-  .publishemnt {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    color: white;
-    padding-top: 20px;
-
-    a{
-      color: white;
-    }
-  }
-
-  .copyright{
-    color: white;
-  }
-}
-
-
 
 .searchcontainer{
    position: relative;
    .suggestionitem{
     width: 66%;
     position: absolute;
-    margin: auto 188px;
+    margin: auto 224px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 0px 0px 4px 4px;
@@ -157,8 +90,13 @@
         text-align: left;
         color: black;
         padding-top: 5px;
+        cursor: pointer;
       }
     }
   }
+}
+
+.showproduct{
+  width: 200px;
 }
 

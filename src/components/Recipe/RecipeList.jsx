@@ -1,17 +1,13 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import { FaThumbsUp, FaClock } from "react-icons";
-import {
-  IoMdClock,
-  IoMdThumbsUp,
-  IoLogoFacebook,
-  IoLogoInstagram,
-} from "react-icons/io";
-import { FaXTwitter } from "react-icons/fa6";
+
 import styles from "./style.module.scss";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer/Footer";
+import TopRated from "../Toprated/TopRated";
 
-const RecipeList = ({ item }) => {
+const RecipeList = ({ item, text, maxLength = 100  }) => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -49,32 +45,43 @@ const RecipeList = ({ item }) => {
     navigate(`/description/${id}`);
   };
 
+  const handleProduct = (id) => {
+    navigate(`/showitem/${id}`);
+  };
+
   const handleInputClick = () => {
     setIsVisible(true); // This will open the div when input is clicked
   };
 
-
   const handleClickOutside = (event) => {
     // Close the div if the click is outside the input and the results div
     if (
-      divRef.current && 
-      !divRef.current.contains(event.target) && 
-      inputRef.current && 
+      divRef.current &&
+      !divRef.current.contains(event.target) &&
+      inputRef.current &&
       !inputRef.current.contains(event.target)
     ) {
       setIsVisible(false);
     }
   };
 
-
   useEffect(() => {
     // Add event listener to detect clicks outside
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       // Cleanup the event listener
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+
+  const [isReadMore, setIsReadMore] = useState(true);
+
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+
+  
 
   return (
     <>
@@ -89,29 +96,55 @@ const RecipeList = ({ item }) => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onClick={handleInputClick}
-                ref={inputRef} 
+                ref={inputRef}
               />
               <button>
-                <BsSearch />
+                <BsSearch onClick={handleProduct}/>
               </button>
             </div>
             {isvisible && (
               <div className={styles.suggestionitem} ref={divRef}>
                 <div className={styles.productitem}>
                   <ul>
-                    {handleSearch.map((item,index)=>(
-                    <li  onChange={(e) => setSearchTerm(e.target.value)}>{item.name}</li>
-
+                    {handleSearch.map((item, index) => (
+                      <li onChange={(e) => setSearchTerm(e.target.value)} onClick={() => handleProduct(item.id)}>
+                        {item.name}
+                      </li>
                     ))}
-                    
                   </ul>
                 </div>
               </div>
             )}
+
+           
           </div>
         </div>
 
         {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>Error: {error.message}</div>
+        ) : (
+          <div className={styles.flexbox}>
+            {recipes.length === 0 ? (
+              <div>No Data Found</div>
+            ) : (
+              recipes.map((item, index) => (
+                <div key={index} className={styles.flexItem}>
+                  <div onClick={() => handleClick(item.id)}>
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <span>{item.name}</span>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+
+
+
+        {/* onChange search the item  */}
+        {/* {loading ? (
           <div>Loading...</div>
         ) : error ? (
           <div>Error: {error.message}</div>
@@ -130,58 +163,9 @@ const RecipeList = ({ item }) => {
               ))
             )}
           </div>
-        )}
+        )} */}
 
-        <div className={styles.middletop}>
-          <h4>Top Rated</h4>
-          <div className={styles.mainfooter}>
-            {recipes.length === 0 ? (
-              <div>No Data Found</div>
-            ) : (
-              recipes.map((fitem, index) => (
-                <div className={styles.maincontent}>
-                  <div className={styles.imgbox}>
-                    <img src={fitem.image} alt="img" />
-                  </div>
-                  <div className={styles.contentbox}>
-                    <div className={styles.label}>
-                      <IoMdThumbsUp /> {fitem.name}
-                    </div>
-                    <div className={styles.label}>
-                      <IoMdClock /> {fitem.mealType}
-                    </div>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-
-        <footer>
-          <div className={styles.footercontent}>
-            <div className={styles.socialmedia}>
-              <IoLogoFacebook /> <IoLogoInstagram /> <FaXTwitter />
-            </div>
-            <div className={styles.publishemnt}>
-              <p>
-                <a href="/">Advertising</a>
-              </p>
-              <p>
-                <a href="/">Terms & Conditions</a>
-              </p>
-              <p>
-                <a href="/">Privacy Policy</a>
-              </p>
-              <p>
-                <a href="/">Hosted by DigitalOcean</a>
-              </p>
-            </div>
-
-            <div className={styles.copyright}>
-              © Copyright 2024 Recipes WordPress Theme — Powered by WordPress
-            </div>
-          </div>
-        </footer>
+        
       </div>
     </>
   );

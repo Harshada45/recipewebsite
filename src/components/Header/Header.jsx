@@ -27,8 +27,8 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Tabs />
-      <RecipeList />
+      {/* <Tabs />
+      <RecipeList /> */}
     </>
   );
 };

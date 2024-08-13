@@ -1,0 +1,14 @@
+.loginpage {
+  background-color: #29336b;
+  margin: 100px auto;
+  width: 600px;
+  padding: 70px;
+  border-radius: 6px;
+}
+.loginpage h3 {
+  color: white;
+}
+.loginpage .formcontent label {
+  color: white;
+  font-size: 16px;
+}/*# sourceMappingURL=style.module.css.map */

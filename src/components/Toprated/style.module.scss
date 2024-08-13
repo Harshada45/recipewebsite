@@ -1,0 +1,35 @@
+.middletop {
+    background-color: #29336b;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+  
+    .mainfooter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  
+      .maincontent {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: calc(20% - 20px);
+        margin: 10px;
+        width: 100px;
+        padding: 4px;
+        gap: 8px;
+        .imgbox {
+          img {
+            width: 60px;
+            border-radius: 6px;
+          }
+        }
+        .contentbox {
+          .label {
+            font-size: 14px;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
