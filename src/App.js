@@ -9,6 +9,7 @@ import ShowItem from "./components/Recipe/ShowItem";
 import Main from "./components/Main/Main";
 import Login from "./components/Authentication/Login/Login";
 import Register from "./components/Authentication/Register/Register";
+import AddToCard from "./components/Addtocard/AddToCard";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/showitem/:id" element={<ShowItem />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/addtocard" element={<AddToCard/>}/>
       </Routes>
       
     </div>

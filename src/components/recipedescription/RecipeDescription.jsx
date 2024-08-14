@@ -46,6 +46,10 @@ function RecipeDescription() {
     navigate("/")
   }
 
+  const handleAddtocard=()=>{
+    navigate("/addtocard")
+  }
+
   return (
     <>
       <div className="container">
@@ -65,6 +69,12 @@ function RecipeDescription() {
                   </div>
                   <div className={styles.rightsection}>
                     <img src={item.image} />
+
+                    <div className="mt-5  d-flex justify-">
+                      <button className="btn btn-warning mr-4" onClick={handleAddtocard}>Add To Card</button>
+                      <button className="btn btn-success">Buy Now</button>
+
+                    </div>
                   </div>
                 </div>
               </div>

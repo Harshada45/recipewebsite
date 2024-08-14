@@ -1,31 +1,29 @@
 import React, { useState } from "react";
 import styles from "./style.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-    const [formData,setFormData]=useState(
-        {
-            email:'',
-            password:'',
-            country:'',
-            phone:''
-            
-        }
-    );
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    country: "",
+    phone: "",
+  });
+ const navigate=useNavigate();
 
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-          ...formData,
-          [name]: value
-        });
-      };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (e) => {
-debugger
-e.preventDefault()
-    console.log({formData});
-    
+    e.preventDefault();
+    console.log({ formData });
+    navigate("/login");
+    localStorage.setItem("formdata",JSON.stringify(formData));
   };
 
   return (
@@ -35,7 +33,15 @@ e.preventDefault()
           <h3 className="text-center">Register Form</h3>
           <form className={styles.formcontent} onSubmit={handleSubmit}>
             <div className="form-group mb-3">
-              <label for="exampleInputEmail1">UserName</label>
+              <label>UserName</label>
+              <input
+                type="username"
+                className="form-control"
+                placeholder="Enter Username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              />
             </div>
             <div className="form-group mb-3">
               <label>Email Address</label>

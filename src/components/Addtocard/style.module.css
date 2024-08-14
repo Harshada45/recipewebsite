@@ -1,0 +1,61 @@
+.additem {
+  background-color: #f1f3f6;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.additem .productaddress {
+  width: 600px;
+}
+.additem .productaddress .itemdetails {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  border: 1px solid #dad0d0;
+}
+.additem .productaddress .itemdetails .pincode {
+  border: 1px solid #dad0d0;
+  padding: 3px 15px;
+}
+.additem .productaddress .itemdetails .pincode a {
+  text-decoration: none;
+}
+.additem .productaddress .productshow {
+  background-color: white;
+  margin-top: 10px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+.additem .productaddress .productshow img {
+  width: 50px;
+}
+.additem .itemdetails {
+  background-color: white;
+  padding: 10px;
+  margin-top: 20px;
+}
+.additem .itemdetails .address {
+  display: flex;
+  justify-content: space-between;
+}
+.additem .pricedetails {
+  background-color: white;
+  margin-top: 20px;
+  width: 350px;
+  height: 400px;
+}
+.additem .pricedetails h6 {
+  color: #b0abab;
+  border-bottom: 1px solid #b0abab;
+  padding: 10px;
+}
+.additem .pricedetails .detailsitem {
+  display: flex;
+  justify-content: space-around;
+}
+.additem .pricedetails .detailsitem .text {
+  font-size: 16px;
+}/*# sourceMappingURL=style.module.css.map */
